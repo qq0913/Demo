@@ -8,12 +8,13 @@ var gameView = new createjs.Container();
 stage.addChild(gameView);
 var n=2;
 var level=1;
+var range=140;
+var light=60;
 var b=15;
 var k=33;
 var start_flag = false;
 function addRect(start_flag){
-    var range=140;
-    var light=60;
+    gameView.removeAllChildren();
     var color="#";
     var diffcolor="#";
     var tt=Math.random();
@@ -32,7 +33,7 @@ function addRect(start_flag){
         color=color+cl;
         diffcolor=diffcolor+dcl;
     }
-    var x=parseInt(Math.random()*n);
+    var x=parseInt(Math.random()*n);//设置不同颜色方块的位置
     var y=parseInt(Math.random()*n);
     for(var indexX=0;indexX<n;indexX++){
         for(var indexY=0;indexY<n;indexY++){
@@ -45,15 +46,34 @@ function addRect(start_flag){
             }
             r.x=indexX*400/n;
             r.y=indexY*400/n;
+            if(start_flag == true &&r.getRectType()==1){
+                r.addEventListener("click",function(){
+                    level = 1;
+                    n = 2;
+                    if(start_flag == true){
+                        document.getElementById("pid").innerHTML="游戏结束";
+                    }
+                    start_flag = false;
+                })
+            }
             if(start_flag == true &&r.getRectType()==2){
                 r.addEventListener("click",function(){
                     if(n<7){
                         ++n;
                     }
-                    gameView.removeAllChildren();
                     level++;
-                    document.getElementById("level").innerHTML=level;
-                    addRect(start_flag);
+                    if(start_flag == true){
+                        document.getElementById("level").innerHTML=level;
+                    }else{
+                        return;
+                    }
+                    if(level > 50){
+                        document.getElementById("pid").innerHTML="第"+(level-1)+"关：恭喜，通关啦！";
+                        start_flag = false;
+                        return;
+                    }else{
+                        addRect(start_flag);
+                    }
                 })
             }
         }
@@ -65,8 +85,7 @@ btn.onclick = function(){
     n = 2;
     level = 1;
     start_flag = true;
-    document.getElementById("level").innerHTML=level;
-    gameView.removeAllChildren();
+    document.getElementById("pid").innerHTML="第<span id='level'>"+level+"</span>关";
     addRect(start_flag);
 }
 addRect(start_flag);
