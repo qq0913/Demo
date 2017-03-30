@@ -15,18 +15,18 @@ body{
     border-radius: 20px;
     background-color: ivory;
 }
-p,button{
+#pid,#btn{
     font-size: large;
     font-weight: 600;
     letter-spacing: 0.05em;
 }
-p{
+#pid{
     text-align: center;
     color: cornflowerblue;
     font-family:"Kaiti";
     letter-spacing: 0.5em;
 }
-button{
+#btn{
     width: 200px;
     height: 30px;
     text-align: center;
