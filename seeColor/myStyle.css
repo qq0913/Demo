@@ -4,6 +4,8 @@
 }
 body{
     background-color: lightgray;
+    height:100%;
+    width:100%;
 }
 .gameFrame{
     width: 400px;
@@ -13,6 +15,9 @@ body{
     border: 3px solid dodgerblue;
     border-radius: 20px;
     background-color: ivory;
+    position:relative;
+    top:50%;
+    margin-top:-262px;
 }
 #pid,#btn{
     font-size: large;
