@@ -48,10 +48,11 @@ function addRect(start_flag){
             r.y=indexY*400/n;
             if(start_flag == true &&r.getRectType()==1){
                 r.addEventListener("click",function(){
+                    var curr_level = level;
                     level = 1;
                     n = 2;
                     if(start_flag == true){
-                        document.getElementById("pid").innerHTML="游戏结束";
+                        document.getElementById("pid").innerHTML="第" + curr_level + "关：游戏结束";
                     }
                     start_flag = false;
                 })
