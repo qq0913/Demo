@@ -53,6 +53,7 @@ function addRect(start_flag){
                     n = 2;
                     if(start_flag == true){
                         document.getElementById("pid").innerHTML="第" + curr_level + "关：游戏结束";
+                        btn.innerHTML = "Start";
                     }
                     start_flag = false;
                 })
